@@ -3,10 +3,10 @@ const Order = require('../models/Order');
 // Place a new order
 exports.placeOrder = async (req, res) => {
   try {
-    const { userId, items } = req.body;
+    const { userId, items, email, mobile, shippingAddress,paymentMethod,totalamount } = req.body;
 
     // Create a new order
-    const order = new Order({ userId, items });
+    const order = new Order({ userId, items ,email,mobile,shippingAddress,paymentMethod,totalamount});
 
     // Save the order to the database
     await order.save();

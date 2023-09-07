@@ -20,6 +20,11 @@ const orderSchema = new mongoose.Schema({
   },
   items: [orderItemSchema],
   // Add any additional fields you need for the order, such as shipping information, total price, etc.
+  email: String, // User's email
+  mobile: String, // User's mobile number
+  shippingAddress: String, // Shipping address
+  paymentMethod: String, // Payment method (e.g., credit card, PayPal)
+  totalamount:Number
 });
 
 module.exports = mongoose.model('Order', orderSchema);
