@@ -22,6 +22,37 @@ exports.placeOrder = async (req, res) => {
 
 
 
+// Get all orders
+exports.getAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find();
+    res.status(200).json({ orders });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+
+// Get all orders by a particular user
+exports.getOrdersByUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    // Find orders with the specified user ID
+    const orders = await Order.find({ userId });
+
+    res.status(200).json({ orders });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+
+
+
+
 // Cancel an order by ID
 exports.cancelOrder = async (req, res) => {
   try {
